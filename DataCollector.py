@@ -7,11 +7,11 @@ class DataCollector:
     """
 
     @staticmethod
-    def choose_match(id, team, event_type):
+    def choose_match(match_id, team, event_type):
         """
         This method takes in a match id, team, and event type and returns the corresponding events
         """
-        events = sb.events(match_id=id)
+        events = sb.events(match_id=match_id)
         events = events[events['team'] == team]
         events = events[events['type']==event_type]
         return events

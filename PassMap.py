@@ -6,7 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from mplsoccer.pitch import Pitch
 
 
-class passMap:
+class PassMap:
     """This class draws a pass map, however in the future this class might be extended to draw
     other types of maps/graphs"""
     @staticmethod

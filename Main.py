@@ -8,29 +8,32 @@ import DataCollector
 
 def main():
     """
-    runs the main logic of the application
+    gives the user the choice to either create an image, or run the application
     """
     while True:
         choice = input("type 1 to create image, type 2 to run app")
         if choice == '1':
-            createImage()
+            create_image()
         elif choice == '2':
-            runApp()
+            run_app()
         else:
             break
             
-def createImage():
+def create_image():
     """
     Creates an image
     """
     d = DataCollector.DataCollector()
-    p = PassMap.passMap()
+    p = PassMap.PassMap()
 
     events = d.choose_match(3938637,'Netherlands', 'Pass')
     outcome, location, end, minutes = d.collect_data(events)
     p.draw_graph(location,minutes,outcome,end,'Netherlands', 'Poland')
 
-def runApp():
+def run_app():
+    """
+    runs the application
+    """
     root = Tk()
     #root.geometry("800x800+300+000")
     image1 = Image.open('NetherlandsvsPoland_at_euro2024.png')  # Replace with your image file
@@ -38,10 +41,10 @@ def runApp():
     photo = ImageTk.PhotoImage(image1)
     label = ttk.Label(root, image=photo)
     label.grid(row = 2, columnspan = 2)
-    fact = 'dsd'
-    t = Text(root, height = 10, width = 10)
-    t.grid(row = 4, columnspan=4)
-    t.insert(END, fact)
+    fact = StringVar()
+    fact.set("Netherlands Vs Poland passmap")
+    t = Label(root, textvariable=fact)
+    t.grid(row = 1, columnspan=2)
 
     root.mainloop()
 if __name__ == '__main__':
